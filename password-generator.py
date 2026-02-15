@@ -25,7 +25,7 @@ def generate_rn():
         return str(variable)
     
     elif choice == 4:
-        random_number_sym = secrets.choice(range(0, 30))#symbols
+        random_number_sym = secrets.choice(range(0, 32))#symbols
         variable = special_symbols[random_number_sym]
         return str(variable)
  
@@ -46,17 +46,28 @@ special_symbols = list("!@#$%^&*()_+-={}[]|:;\"'<>,.?/~`")
 os.system('cls' if os.name == 'nt' else 'clear')
 print("Password generator")
 print("Security levels: Basic (1), Secure (2), Ultra Secure (3).")
-user_input = int(input("Choose a security level for password. Enter a number (1-3): "))
 
-if user_input == 1:
-    rm = secrets.choice(range(12,17))
 
-elif user_input == 2:
-    rm = secrets.choice(range(16,25))
+while True:
+    
+    try:
 
-elif user_input == 3:
-    rm = secrets.choice(range(25,32))
+        user_input = int(input("Choose a security level for password. Enter a number (1-3): "))
+        if user_input == 1:
+            rm = secrets.choice(range(12,17))
+            break
 
+        elif user_input == 2:
+            rm = secrets.choice(range(16,25))
+            break 
+
+        elif user_input == 3:
+            rm = secrets.choice(range(25,32))
+            break
+        else:
+            print("Enter a corect number!")
+    except ValueError:
+        print("Error! Enter a correct value.")
 
 
 password = [None] * rm
@@ -80,4 +91,3 @@ for c in password:
 print("Password generated: ", s)
 print("")
 print("\n" * 4)#for creating some empty space
-
